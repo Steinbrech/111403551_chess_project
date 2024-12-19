@@ -7,15 +7,45 @@ Original file is located at
     https://colab.research.google.com/drive/1LVdzGVRatdJvm6fjv7jaQ6vakVvhxeG5
 """
 
+checkerboard =[
+
+[1, 0, 0, 0, 0, 0, 0, 0],
+
+[0, 0, 0, 0, 0, 0, 0, 0],
+
+[0, 0, 0, 0, 0, 0, 0, 0],
+
+[0, 0, 0, 0, 0, 0, 0, 0],
+
+[0, 0, 0, 0, 0, 0, 0, 0],
+
+[0, 0, 0, 0, 0, 0, 0, 0],
+
+[0, 0, 0, 0, 0, 0, 0, 0],
+
+[0, 0, 0, 0, 0, 0, 0, 0]
+
+]
+
+def king(x1, y1, x2, y2):
+  if (x1, y1) == (x2, y2):
+    print("No")
+    return
+
+  if x2 < 0 or x2 > 7 or y2 < 0 or y2 > 7 or checkerboard[x2][y2] == 1:
+    print("No")
+    return
+
+  if abs(x2 - x1) <= 1 and abs(y2 - y1) <= 1:
+    print("Yes")
+    return
+
+  print("No")
+  return
+
 origin = input().split()
 move = input().split()
-x_move = abs(int(origin[0]) - int(move[0]))
-y_move = abs(int(origin[1]) - int(move[1]))
-if x_move + y_move > 2 or x_move > 1 or y_move > 1:
-  print("No")
-elif x_move == 0 and y_move == 0:
-  print("No")
-elif checkerboard[int(move[0])][int(move[1])] == 1:
-  print("No")
-else:
-  print("Yes")
+x1, y1 = int(origin[0]), int(origin[1])
+x2, y2 = int(move[0]), int(move[1])
+
+king(x1, y1, x2, y2)
